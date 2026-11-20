@@ -53,7 +53,7 @@ require_once __DIR__ . '/../config.php';
                 <div class="footer-col">
                     <h4>Deployment</h4>
                     <ul class="footer-links">
-                        <li><a href="<?= BASE_URL ?>/database/seed.php">Database Seeder</a></li>
+                        <!-- <li><a href="<?= BASE_URL ?>/database/seed.php">Database Seeder</a></li> -->
                         <li><a href="#">XAMPP Architecture</a></li>
                         <li><a href="#">MySQLi Schema</a></li>
                         <li><a href="#">System Diagnostics</a></li>
