@@ -20,8 +20,14 @@ if (!defined('BASE_URL')) {
     }
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// NOTE: session_start() is intentionally NOT called here anymore.
+// On Wasmer (and other serverless/ephemeral PHP hosts) requests can be
+// handled by different instances with no shared, persistent local
+// filesystem, so PHP's default file-based session storage silently loses
+// sessions between requests (login appears to work, then the very next
+// page redirects back to login). We now start the session from
+// includes/db.php, AFTER the MySQL connection exists, using a database
+// session handler (includes/db_session_handler.php) so sessions survive
+// across instances. See includes/db.php.
 
 require_once __DIR__ . '/includes/icons.php';

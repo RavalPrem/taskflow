@@ -71,3 +71,11 @@ CREATE TABLE IF NOT EXISTS activity_log (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- SESSIONS (database-backed PHP session storage - required on Wasmer so
+-- that logins survive across requests; see includes/db_session_handler.php)
+CREATE TABLE IF NOT EXISTS sessions (
+  id VARCHAR(128) NOT NULL PRIMARY KEY,
+  data MEDIUMTEXT NOT NULL,
+  last_access TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -27,3 +27,12 @@ if (!$connected) {
 }
 
 mysqli_set_charset($conn, 'utf8mb4');
+
+// Start the session AFTER the DB connection exists, using a MySQL-backed
+// session handler. This must run here (not in config.php) because the
+// handler needs $conn. See includes/db_session_handler.php for why this
+// is required on Wasmer.
+require_once __DIR__ . '/db_session_handler.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}

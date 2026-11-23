@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/includes/db.php';
 
 $is_logged_in = isset($_SESSION['user_id']);
 $user_name = $_SESSION['full_name'] ?? '';
