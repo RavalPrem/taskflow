@@ -139,7 +139,7 @@ if ($search !== '') {
 $where_sql = !empty($where_clauses) ? "WHERE " . implode(" AND ", $where_clauses) : "";
 
 $query = "
-    SELECT DISTINCT t.id, t.title, t.description, t.priority, t.status, t.due_date, t.assigned_to, t.project_id,
+    SELECT DISTINCT t.id, t.title, t.description, t.priority, t.status, t.due_date, t.assigned_to, t.project_id, t.created_at,
            p.name AS project_name, p.status AS project_status, p.manager_id,
            u.full_name AS assigned_name,
            mgr.full_name AS manager_name
